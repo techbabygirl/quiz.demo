@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Quiz</title>
+</head>
+<body>
+    <!-- top section -->
+    <div class="intro py-3 bg-white text-center">
+<div class="container">
+    <h2 class="text-primary display-3 my-4">pratice Quiz</h2>
+    <div class="showScore"></div>
+</div>
+    </div>
+    <!-- result section  -->
+    <div class="result py-4 d-none text-center">
+        <div class="container lead">
+            <p>you are <span class="text-primary display-4 p-3">0%</span> Queen</p>
+        </div>
+    </div>
+
+    <!-- Quiz section -->
+    <div class="quiz py-4 bg-primary">
+        <div class="container">
+            <h2 class="my-5 text-white">On with the question</h2>
+             <!-- Question 1 -->
+            <form class="quiz-form text-light">
+               <div class="my-5">
+                    <p class="lead font-weight-normal">1. Hope you are fine?</p>
+                    <div class="form-check my-2.text-white-50">
+                        <input type="radio" name="q1" value="A" checked>
+                        <label class="form-check-label">yes</label>
+                    </div>
+                    <div class="form-check my-2 text-white-50">
+                        <input type="radio" name="q1" value="B">
+                        <label class="form-check-label">NO</label>
+                    </div>
+                </div>
+           
+             <!-- Question 2 -->
+            
+                <div class="my-5">
+                     <p class="lead font-weight-normal">2. Hope you are fine?</p>
+                     <div class="form-check my-2.text-white-50">
+                         <input type="radio" name="q2" value="A" checked>
+                         <label class="form-check-label">yes</label>
+                     </div>
+                     <div class="form-check my-2 text-white-50">
+                         <input type="radio" name="q2" value="B">
+                         <label class="form-check-label">NO</label>
+                     </div>
+                 </div>
+           
+
+              <!-- Question 3 -->
+      
+                <div class="my-5">
+                     <p class="lead font-weight-normal">3. Hope you are Good?</p>
+                     <div class="form-check my-2.text-white-50">
+                         <input type="radio" name="q3" value="A" checked>
+                         <label class="form-check-label">yes</label>
+                     </div>
+                     <div class="form-check my-2 text-white-50">
+                         <input type="radio" name="q3" value="B">
+                         <label class="form-check-label">NO</label>
+                     </div>
+                </div>
+           
+
+             <!-- Question 4 -->
+             <div class="my-5">
+                     <p class="lead font-weight-normal">4. Hope you are enjoying?</p>
+                     <div class="form-check my-2.text-white-50">
+                         <input type="radio" name="q4" value="A" checked>
+                         <label class="form-check-label">yes</label>
+                     </div>
+                     <div class="form-check my-2 text-white-50">
+                         <input type="radio" name="q4" value="B">
+                         <label class="form-check-label">NO</label>
+                     </div>
+             </div>
+                <div class="text-center">
+                    <input type="Submit" class="btn btn-light">
+                </div>
+          </form>
+            
+        </div>
+    </div>
+    
+</body>
+<script>
+    const correctAnswer =['B', 'B', 'B', 'B'];
+    const form = document.querySelector('quiz-form');
+    let result = document.querySelector('.result')
+
+    form.addEventListener('submit', e => {
+    e.preventDefault();
+    let score = 0;
+
+    const userAnswers = [form.q1.value, form.q2.value, form.q3.value, form.q4.value];
+
+    userAnswers.forEach((answers, index) => {
+     if(answers === correctAnswer[index]){
+        score += 25
+        }
+        
+    });
+    //   show result
+    scrollTo(0.0);
+     result.classList.remove('d-none');
+
+     let output = 0
+     const timer = setInterval(() => {
+     result.querySelector('span').textContent = `${output}%`;
+        if(output == score){
+            clearInterval(timer);
+        }else {
+            output++;
+        }
+     }, 3000);
+
+    });
+
+// window object (global object)
+
+</script>
+</html>
